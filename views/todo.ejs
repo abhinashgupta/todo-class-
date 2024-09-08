@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+</head>
+<body>
+    <h1>TODO-LIST</h1>
+
+    <h3>Create Todo</h3>
+    <form action="/createTodo" method="post">
+        <input type="text" placeholder="Todo name" name="name">
+        <input type="email" placeholder="Todo email" name="email">
+        <input type="text" placeholder="Todo description" name="description">
+        <select name="status" id="">
+            <option name="status" >Pending</option>
+            <option name="status" >Done</option>
+        </select>
+        <button type="submit">Create</button>
+    </form>
+
+    <ul>
+        <% todos.forEach((todo)=>{   %>
+             <li>
+                <h4><%= todo.name %></h4>
+                <h4><%= todo.email %></h4>
+                <h4><%= todo.description %></h4>
+                <h4>Status :<%= todo.status %></h4>
+                <form action="/deleteTodo/<%= todo._id %>" method="get">
+                     <button type="submit">Delete</button>
+                </form>
+             </li>
+        <% }) %>
+    </ul>
+</body>
+</html>
